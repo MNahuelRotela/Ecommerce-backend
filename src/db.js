@@ -9,14 +9,13 @@ const {
     DB_HOST,
     DB_PORT,
     DB_NAME,
+    URL
 } = process.env;
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-    host: DB_HOST,
-    port: DB_PORT,
-    dialect: 'postgres',
-    logging: false,
+const sequelize = new Sequelize(URL, {
+  dialect: 'postgres',
 });
+
 
 const basename = path.basename(__filename);
 const modelDefiners = [];
