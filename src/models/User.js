@@ -1,45 +1,49 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define("User", {
+  sequelize.define("user", {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: "not",
+      validate: {
+        len: [2, 50],
+      },
     },
-    surname: {
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: "not",
+      validate: {
+        len: [2, 50],
+      },
+    },
+    user: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: {
+          msg: "El campo usuario no puede estar vacío",
+        },
+      },
     },
-    password: {
+    mail: {
       type: DataTypes.STRING,
-      allowNull: false,
-    
+      allowNull: true,
+      unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      isEmail: true,
-    },
-    role: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "admin",
-    },
-    tokens: {
-      type: DataTypes.ARRAY(DataTypes.TEXT),
-      defaultValue: [],
-    },    
-
-    isActive: {
+    isAdmin: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
+      defaultValue: false,
     },
   });
 };

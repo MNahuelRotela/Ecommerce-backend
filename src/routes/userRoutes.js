@@ -1,20 +1,17 @@
-const express = require("express");
-const {
-  createUser,
-  signIn,
-  logOut
+const { Router } = require("express");
 
-} = require("../controllers/user/user");
+const userAllCtrl = require("../controllers/users/usersAllCtrl.js");
+const createUserCtrl = require("../controllers/users/createUsersCtrl.js");
+const deleteUserCtrl = require("../controllers/users/deleteUserCtrl.js");
+const userByIdCtrl = require("../controllers/users/userByIdCtrl.js");
+const updateUserCtrl = require("../controllers/users/updateUserCtrl.js");
 
-const { isLoggedIn } = require("../middleware/auth");
+const usersRouter = Router();
 
-const userRouter = express.Router();
+usersRouter.post("/", createUserCtrl);
+usersRouter.get("/", userAllCtrl);
+usersRouter.delete("/:id", deleteUserCtrl);
+usersRouter.get("/:id", userByIdCtrl);
+usersRouter.put("/:id", updateUserCtrl);
 
-userRouter.delete("/auth/logOut", isLoggedIn, logOut);
-
-
-userRouter.post("/signUp", createUser);
-userRouter.post("/signIn", signIn);
-
-
-module.exports = userRouter;
+module.exports = usersRouter;
