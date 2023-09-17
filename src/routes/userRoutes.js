@@ -1,10 +1,10 @@
 const { Router } = require("express");
 
-const userAllCtrl = require("../controllers/users/usersAllCtrl.js");
-const createUserCtrl = require("../controllers/users/createUsersCtrl.js");
-const deleteUserCtrl = require("../controllers/users/deleteUserCtrl.js");
-const userByIdCtrl = require("../controllers/users/userByIdCtrl.js");
-const updateUserCtrl = require("../controllers/users/updateUserCtrl.js");
+const userAllCtrl = require("../controllers/user/usersAllCtrl.js");
+const createUserCtrl = require("../controllers/user/createUserCtrl.js");
+const deleteUserCtrl = require("../controllers/user/deleteUserCtrl.js");
+const userByIdCtrl = require("../controllers/user/userByIdCtrl.js");
+const updateUserCtrl = require("../controllers/user/updateUserCtrl.js");
 
 const usersRouter = Router();
 
