@@ -3,7 +3,7 @@ const { sequelize } = require('./src/db.js');
 
 
 sequelize.sync({ alter: true }).then(() => { 
-  server.listen(3001, () => {
-    console.log('server listening at 3001'); 
+  server.listen(8080, () => {
+    console.log('server listening at 8080'); 
   });
 });
